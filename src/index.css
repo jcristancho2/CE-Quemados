@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: 'Geist Mono', monospace;
+  }
+
+  body {
+    background-color: #f5f5f5;
+    color: #111827;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+.page-wrapper {
+  background: linear-gradient(to bottom, #faf7ff 0%, #f5f5f7 100%);
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes icon-turn {
+  from { transform: rotate(-110deg) scale(.7); opacity: .3; }
+  to { transform: rotate(0) scale(1); opacity: 1; }
+}
+
+.page-enter { animation: page-enter .42s cubic-bezier(.22, 1, .36, 1) both; }
+.page-enter-delayed { animation-delay: .1s; }
+
+.burn-dashboard { scroll-behavior: smooth; }
+.burn-hero {
+  background:
+    radial-gradient(ellipse at 89% 8%, rgb(223 168 175 / 35%) 0, transparent 34%),
+    linear-gradient(110deg, #fff 0%, #fffafb 58%, #f8edef 100%);
+}
+.burn-chart-card { scroll-margin-top: 1.25rem; }
+.burn-dashboard section[id] { scroll-margin-top: 9rem; }
+
+/* Dashboard palette previews */
+.burn-dashboard {
+  --burn-page-bg: #f3f5f8;
+  --burn-sidebar: #172b40;
+  --burn-active: #df5a7d;
+  --burn-accent: #c63e62;
+  --burn-accent-soft: #ffe8ef;
+  --burn-soft-slate: #eaf0f5;
+  --burn-border: #f0d2dc;
+  --burn-ink: #18324b;
+  --burn-gradient-a: #9e3657;
+  --burn-gradient-b: #d24f75;
+  --burn-gradient-c: #f0809e;
+  --burn-chart-1: #e85d83;
+  --burn-chart-2: #18324b;
+  --burn-chart-3: #48a6dd;
+  --burn-chart-4: #c93d69;
+  --burn-chart-5: #f6b6c7;
+  --burn-chart-6: #5c87aa;
+  --burn-hero-bg: radial-gradient(ellipse at 89% 8%, rgb(235 110 144 / 29%) 0, transparent 34%), linear-gradient(110deg, #fff 0%, #fffafb 58%, #fff0f4 100%);
+  background-color: var(--burn-page-bg);
+}
+
+.burn-dashboard[data-palette="ocean"] {
+  --burn-page-bg: #f1f7f7;
+  --burn-sidebar: #17343d;
+  --burn-active: #00a8ad;
+  --burn-accent: #007985;
+  --burn-accent-soft: #ddf6f4;
+  --burn-soft-slate: #e1eff1;
+  --burn-border: #c9e5e7;
+  --burn-ink: #143f56;
+  --burn-gradient-a: #006b78;
+  --burn-gradient-b: #06a4ab;
+  --burn-gradient-c: #5ad4ca;
+  --burn-chart-1: #00a8ad;
+  --burn-chart-2: #143f56;
+  --burn-chart-3: #47c7d4;
+  --burn-chart-4: #267f96;
+  --burn-chart-5: #c0f0ed;
+  --burn-chart-6: #56aab6;
+  --burn-hero-bg: radial-gradient(ellipse at 89% 8%, rgb(31 186 184 / 24%) 0, transparent 34%), linear-gradient(110deg, #fff 0%, #f7fdfd 58%, #e5f7f5 100%);
+}
+
+.burn-dashboard[data-palette="indigo"] {
+  --burn-page-bg: #f3f4f9;
+  --burn-sidebar: #252c47;
+  --burn-active: #6366ee;
+  --burn-accent: #474fc3;
+  --burn-accent-soft: #ebebff;
+  --burn-soft-slate: #e9edf5;
+  --burn-border: #dfe2ee;
+  --burn-ink: #2d3858;
+  --burn-gradient-a: #4347c0;
+  --burn-gradient-b: #6b6eea;
+  --burn-gradient-c: #a0a3ff;
+  --burn-chart-1: #696df0;
+  --burn-chart-2: #292f68;
+  --burn-chart-3: #72a0f5;
+  --burn-chart-4: #4e56d7;
+  --burn-chart-5: #d6d9ff;
+  --burn-chart-6: #6778c2;
+  --burn-hero-bg: radial-gradient(ellipse at 89% 8%, rgb(118 123 239 / 23%) 0, transparent 34%), linear-gradient(110deg, #fff 0%, #fafaff 58%, #eeeeff 100%);
+}
+
+.burn-dashboard[data-palette="sage"] {
+  --burn-page-bg: #f2f6f3;
+  --burn-sidebar: #203a35;
+  --burn-active: #20a873;
+  --burn-accent: #147954;
+  --burn-accent-soft: #def6e8;
+  --burn-soft-slate: #e4f0e9;
+  --burn-border: #cde6d6;
+  --burn-ink: #17463d;
+  --burn-gradient-a: #116a4b;
+  --burn-gradient-b: #22a875;
+  --burn-gradient-c: #77d7a1;
+  --burn-chart-1: #27b47c;
+  --burn-chart-2: #17463d;
+  --burn-chart-3: #7ed9ad;
+  --burn-chart-4: #128767;
+  --burn-chart-5: #cff2da;
+  --burn-chart-6: #579b7d;
+  --burn-hero-bg: radial-gradient(ellipse at 89% 8%, rgb(53 186 124 / 23%) 0, transparent 34%), linear-gradient(110deg, #fff 0%, #f9fffb 58%, #eaf9ef 100%);
+}
+
+.burn-dashboard .burn-hero { background: var(--burn-hero-bg); }
+.burn-dashboard [class*="172b40"] { background-color: var(--burn-sidebar) !important; }
+.burn-dashboard [class*="c37c87"] { background-color: var(--burn-active) !important; border-color: var(--burn-active) !important; }
+.burn-dashboard [class*="f3f5f8"] { background-color: var(--burn-page-bg) !important; }
+.burn-dashboard [class*="984c5a"] { background-image: linear-gradient(135deg, var(--burn-gradient-a), var(--burn-gradient-b), var(--burn-gradient-c)) !important; }
+.burn-dashboard [class*="f8e8ea"] { background-color: var(--burn-accent-soft) !important; }
+.burn-dashboard [class*="eaf0f5"],
+.burn-dashboard [class*="edf1f5"] { background-color: var(--burn-soft-slate) !important; }
+.burn-dashboard [class*="f2f7f8"] { background-color: var(--burn-accent-soft) !important; }
+.burn-dashboard [class*="a75b69"],
+.burn-dashboard [class*="a56570"],
+.burn-dashboard [class*="9b5261"],
+.burn-dashboard [class*="8c5962"],
+.burn-dashboard [class*="87505b"],
+.burn-dashboard [class*="c88a96"] { color: var(--burn-accent) !important; }
+.burn-dashboard [class*="d58a94"] { background-color: var(--burn-chart-1) !important; }
+.burn-dashboard [class*="20364e"],
+.burn-dashboard [class*="31465c"],
+.burn-dashboard [class*="263d56"] { color: var(--burn-ink) !important; }
+.burn-dashboard [class*="ead5d9"],
+.burn-dashboard [class*="eadfe1"],
+.burn-dashboard [class*="e5e8ee"],
+.burn-dashboard [class*="dce6e9"] { border-color: var(--burn-border) !important; }
+.burn-dashboard [class*="cf8590"] { border-color: var(--burn-active) !important; }
+
+button {
+  transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, color .16s ease;
+}
+
+button:not(:disabled):active { transform: scale(.97); }
+.theme-toggle svg { animation: icon-turn .28s cubic-bezier(.22, 1, .36, 1); }
+
+.theme-dark body { background: #0b1120; color: #e2e8f0; }
+.theme-dark .page-wrapper { background: linear-gradient(to bottom, #13102a 0%, #0b1120 100%); }
+.theme-dark header, .theme-dark footer, .theme-dark [class*="bg-white"] { background-color: #151e2e !important; }
+.theme-dark [class*="bg-slate-50"], .theme-dark [class*="bg-slate-100"] { background-color: #1e293b !important; }
+.theme-dark [class*="border-"] { border-color: #334155 !important; }
+.theme-dark [class*="text-slate-"] { color: #dbe5f1 !important; }
+.theme-dark input, .theme-dark textarea, .theme-dark select { background-color: #0f172a !important; color: #e2e8f0; border-color: #475569 !important; }
+.theme-dark .theme-toggle { background: #1e293b !important; color: #fde68a !important; border-color: #475569 !important; }
+.theme-dark .burn-dashboard { background-color: #0b1120 !important; }
+.theme-dark .burn-hero { background: radial-gradient(ellipse at 89% 8%, rgb(137 79 93 / 24%) 0, transparent 34%), linear-gradient(110deg, #151e2e 0%, #171d29 100%); border-color: #334155; }
+.theme-dark .burn-dashboard .burn-card, .theme-dark .burn-dashboard .burn-chart-card { background-color: #151e2e !important; border-color: #334155 !important; }
+.theme-dark .burn-dashboard footer { background-color: #151e2e !important; border-color: #334155 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+
+button, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgb(124 58 237 / 0.35);
+  outline-offset: 2px;
+}
+
+@media (max-width: 639px) {
+  html { font-size: 15px; }
+  .page-wrapper main { padding-inline: 1rem; padding-top: 1rem; }
+}
+
+/* Custom scrollbars for data-dense clinical table */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f4;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
